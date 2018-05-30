@@ -2,7 +2,9 @@ package de.canitzp.dsweaponsandarmor.weapons;
 
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.client.event.ModelBakeEvent;
 import net.minecraftforge.client.event.ModelRegistryEvent;
 import net.minecraftforge.client.model.ModelLoader;
@@ -12,6 +14,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+
 
 /**
  * @author canitzp
@@ -24,8 +27,15 @@ public enum DSSwords {
 
     // Daggers
     D_DAGGER(140, 131, 105, 26, 134, 200, 140, 0.5F, false, true),
-    D_PARRYING_DAGGER(135, 131, 102, 26, 135, 200, 129, 22F, true, true),
+    D_GHOST_BLADE(165, 127, 0, 26, 0, 100, 0, 0.5F, false, false),
+    D_PARRYING_DAGGER(135, 131, 102, 26, 135, 200, 129, 0.5F, true, true){
+        @Override
+        public String getNameAddition() {
+            return TextFormatting.GOLD.toString();
+        }
+    },
     // Straight Swords
+    S_ASTORAS_STRAIGHT_SWORD(120, 100, 120, 32, 0, 160, 0, 3.0F, false, true),
 
     // Greatswords
 
@@ -74,6 +84,7 @@ public enum DSSwords {
     }
 
     public static float getHeaviestWeapon(){
+        if(true) return 24; //TODO remove line if all swords are added
         float weight = 0;
         for(DSSwords swordType : DSSwords.values()){
             weight = Math.max(weight, swordType.getWeight());
@@ -119,5 +130,13 @@ public enum DSSwords {
 
     public boolean isEnchantable() {
         return enchantable;
+    }
+
+    public ItemDSSword getItem() {
+        return item;
+    }
+
+    public String getNameAddition() {
+        return null;
     }
 }

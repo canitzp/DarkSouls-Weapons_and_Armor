@@ -1,0 +1,15 @@
+misc.darksoulsweaponsandarmor:damage_type_physical.name=Physical Damage: %s
+misc.darksoulsweaponsandarmor:damage_type_magical.name=Magical Damage: %s
+misc.darksoulsweaponsandarmor:damage_type_fire.name=Fire Damage: %s
+misc.darksoulsweaponsandarmor:damage_type_lightning.name=Lightning Strike Damage: %s
+misc.darksoulsweaponsandarmor:weapon_knockback.name=Knockback: %s
+misc.darksoulsweaponsandarmor:weapon_weight.name=Weight: %s
+
+itemGroup.darksoulsweaponsandarmor=Dark Souls - Weapons & Armor
+
+item.darksoulsweaponsandarmor:sword_d_dagger.name=Dagger
+item.darksoulsweaponsandarmor:sword_d_dagger.desc1=This standard small dagger has only a modest attack but can be jabbed in rapid succession, and is effective in critical hits such as after a parry or when stabbing in the back.
+item.darksoulsweaponsandarmor:sword_d_dagger.desc2=§mWith both slash and thrust attacks this dagger is useful in various situations.
+item.darksoulsweaponsandarmor:sword_d_parrying_dagger.name=Parrying Dagger
+item.darksoulsweaponsandarmor:sword_d_parrying_dagger.desc1=§mThis dagger is useful after parrying and is normally equipped in the left hand.
+item.darksoulsweaponsandarmor:sword_d_parrying_dagger.desc2=A favorite of the knights of Carim, who are famous for fighting without a shield.
