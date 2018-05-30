@@ -1,0 +1,16 @@
+[
+{
+  "modid": "darksoulsweaponsandarmor",
+  "name": "Dark Souls - Weapons & Armor",
+  "description": "",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["canitzp", "Gamer025"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
