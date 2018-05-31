@@ -1,5 +1,7 @@
 package de.canitzp.dsweaponsandarmor.weapons;
 
+import de.canitzp.dsweaponsandarmor.CreativeTab;
+import de.canitzp.dsweaponsandarmor.WeaponTypes;
 import net.minecraft.client.renderer.block.model.ModelBakery;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.EnumRarity;
@@ -15,6 +17,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
+import static de.canitzp.dsweaponsandarmor.WeaponTypes.*;
+
 
 /**
  * @author canitzp
@@ -26,16 +30,30 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public enum DSSwords {
 
     // Daggers
-    D_DAGGER(140, 131, 105, 26, 134, 200, 140, 0.5F, false, true),
-    D_GHOST_BLADE(165, 127, 0, 26, 0, 100, 0, 0.5F, false, false),
-    D_PARRYING_DAGGER(135, 131, 102, 26, 135, 200, 129, 0.5F, true, true){
+    D_DAGGER(DAGGER, 140, 131, 105, 26, 134, 200, 140, 0.5F, false, true),
+    D_GHOST_BLADE(DAGGER, 165, 127, 0, 26, 0, 100, 0, 0.5F, false, false){
+        @Override
+        public String getNameAddition() {
+            return TextFormatting.DARK_AQUA.toString();
+        }
+        @Override
+        public int getMagicDamage() {
+            return this.getPhysicalDamage();
+        }
+    },
+    D_PARRYING_DAGGER(DAGGER, 135, 131, 102, 26, 135, 200, 129, 0.5F, true, true){
         @Override
         public String getNameAddition() {
             return TextFormatting.GOLD.toString();
         }
     },
     // Straight Swords
-    S_ASTORAS_STRAIGHT_SWORD(120, 100, 120, 32, 0, 160, 0, 3.0F, false, true),
+    S_ASTORAS_STRAIGHT_SWORD(STRAIGHT_SWORDS, 120, 100, 120, 32, 0, 160, 0, 3.0F, false, true){
+        @Override
+        public String getNameAddition() {
+            return TextFormatting.GOLD.toString();
+        }
+    },
 
     // Greatswords
 
@@ -50,12 +68,14 @@ public enum DSSwords {
     // Piercing Swords
     ;
 
+    private WeaponTypes weaponType;
     private int physicalDamage, criticalDamage, magicDamage, stability, fireDamage, durability, lightningDamage;
     private float weight;
     private boolean twoHand, enchantable;
     private ItemDSSword item;
 
-    DSSwords(int physicalDamage, int criticalDamage, int magicDamage, int stability, int fireDamage, int durability, int lightningDamage, float weight, boolean twoHand, boolean enchantable) {
+    DSSwords(WeaponTypes type, int physicalDamage, int criticalDamage, int magicDamage, int stability, int fireDamage, int durability, int lightningDamage, float weight, boolean twoHand, boolean enchantable) {
+        this.weaponType = type;
         this.physicalDamage = physicalDamage;
         this.criticalDamage = criticalDamage;
         this.magicDamage = magicDamage;
@@ -72,6 +92,7 @@ public enum DSSwords {
     public static void register(RegistryEvent.Register<Item> event){
         for(DSSwords swordType : DSSwords.values()){
             event.getRegistry().register(swordType.item = new ItemDSSword(swordType));
+            CreativeTab.add(swordType.weaponType, swordType.item);
         }
     }
 
@@ -90,6 +111,10 @@ public enum DSSwords {
             weight = Math.max(weight, swordType.getWeight());
         }
         return weight;
+    }
+
+    public WeaponTypes getWeaponType() {
+        return weaponType;
     }
 
     public int getPhysicalDamage() {

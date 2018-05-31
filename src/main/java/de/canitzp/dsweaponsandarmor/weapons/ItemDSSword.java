@@ -5,6 +5,7 @@ import de.canitzp.dsweaponsandarmor.DSWA;
 import de.canitzp.dsweaponsandarmor.EntityUtils;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -23,6 +24,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.client.config.GuiUtils;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
@@ -75,10 +77,10 @@ public class ItemDSSword extends Item {
         String descKey = "item." + this.getRegistryName().toString() + ".desc1";
         if(I18n.hasKey(descKey)){
             tooltip.add("");
-            tooltip.add(TextFormatting.ITALIC + I18n.format(descKey) + TextFormatting.RESET + TextFormatting.GRAY);
+            tooltip.addAll(Minecraft.getMinecraft().fontRenderer.listFormattedStringToWidth(TextFormatting.ITALIC + I18n.format(descKey) + TextFormatting.RESET + TextFormatting.GRAY, 200));
             descKey = "item." + this.getRegistryName().toString() + ".desc2";
             if(I18n.hasKey(descKey)){
-                tooltip.add(TextFormatting.ITALIC + I18n.format(descKey) + TextFormatting.RESET + TextFormatting.GRAY);
+                tooltip.addAll(Minecraft.getMinecraft().fontRenderer.listFormattedStringToWidth(TextFormatting.ITALIC + I18n.format(descKey) + TextFormatting.RESET + TextFormatting.GRAY, 200));
             }
             tooltip.add("");
         }

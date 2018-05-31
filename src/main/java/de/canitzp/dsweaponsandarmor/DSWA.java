@@ -15,12 +15,7 @@ public class DSWA {
     public static final String MODNAME = "Dark Souls - Weapons & Armor";
     public static final String MODVERSION = "@Version@";
 
-    public static CreativeTabs TAB = new CreativeTabs(MODID) {
-        @Override
-        public ItemStack getTabIconItem() {
-            return new ItemStack(DSSwords.D_DAGGER.getItem());
-        }
-    };
+    public static CreativeTabs TAB = new CreativeTab();
 
     public static float map(float input, float minIn, float maxIn, float minOut, float maxOut) {
         return (input - minIn) * (maxOut - minOut) / (maxIn - minIn) + minOut;
